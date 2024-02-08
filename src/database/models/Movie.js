@@ -1,5 +1,5 @@
 module.exports=(sequelize,dataTypes)=>{
-    let nombre="Peliculas"
+    let nombre="Movie"
     let columnas={
         id:{
             type:DataTypes.INTEGER,
