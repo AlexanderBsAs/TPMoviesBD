@@ -1,20 +1,53 @@
 const db = require("../database/models")
 
 let moviesController={
-    peliculas:(req,res)=>{
-        console.log(db.Movie)
-      let movies=db.Movie.findAll()
-      .then(function(peliculas){
-        if(!peliculas){
-            return false
-        }
-        return peliculas
+   list:(req,res)=>{
+        
+      db.Movie.findAll()
+      .then(function(movies){
+        /* console.log("hola"+movies) */
+     res.render("moviesList",{movies})
+        
       }
       )
       .catch(function(error){
-        console.log(error)
+        res.send(error)
       })
-    res.render("moviesList",movies)
+ 
     },
-    
+    detail:(req,res)=>{
+        let id=req.params.id
+        db.Movie.findByPk(id)
+        .then(resultado=>{
+            res.render("moviesDetail",{movie:resultado})
+        })
+        
+    },
+    nuevo:(req,res)=>{
+    db.Movie.findAll(
+        {
+            order:[["release_date","DESC"]]
+        }
+    )
+    .then(movies=>{
+        res.render("newestMovies", {movies})
+    })
+
+    .catch(error=>{
+        res.send(error)})
+    },
+
+    recommended:(req,res)=>{
+        db.Movie.findAll({
+            order:[["release_date","DESC"]],
+            limit:5
+        })
+        .then(resultado=>{
+            res.render("recommendedMovies",{movies:resultado})
+        })
+    },
+
 }
+
+
+module.exports=moviesController
