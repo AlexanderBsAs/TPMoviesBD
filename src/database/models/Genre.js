@@ -1,5 +1,5 @@
 module.exports=(sequelize,dataTypes)=>{
-    let nombre="Peliculas"
+    let nombre="Genre"
     let columnas={
         id:{
             type:dataTypes.INTEGER,
@@ -32,8 +32,8 @@ module.exports=(sequelize,dataTypes)=>{
     }
 
 let config = {
-    tableName:"movies",
-    timestamps:true
+    tableName:"genres",
+    timestamps:false
 }
 const Pelicula=sequelize.define(nombre,columnas,config)
 return Pelicula
