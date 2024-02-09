@@ -13,8 +13,11 @@
     </figure>    
     <h1><%= genre.name %> </h1>
     <br>
+    <!-- //agregado creado, actualizado y el activo -->
     <p>NAME: <%= genre.name %> </p>
     <p>RANKIG: <%= genre.ranking %> </p>
-
+    <p>CREADO EN: <%=genre.created_at  %></p>
+    <p>FUE ACTUALIZADO EN: <%=genre.updated_at  %> </p>
+    <p>ACTIVO?: <%= genre.active==1? "SI":"NO"   %></p>
 </body>
 </html>
