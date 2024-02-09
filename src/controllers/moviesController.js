@@ -17,6 +17,10 @@ let moviesController={
     },
     detail:(req,res)=>{
         let id=req.params.id
+          let generos=   db.Genre.findAll().
+            then(resultado=>{
+         
+            })
         db.Movie.findByPk(id)
         .then(resultado=>{
             res.render("moviesDetail",{movie:resultado})
