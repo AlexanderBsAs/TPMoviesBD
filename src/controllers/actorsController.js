@@ -3,6 +3,9 @@ const db = require("../database/models")
 
 
 let actorsController={
+
+  /*                         LISTADO DE ACTORES                                        */
+
       list:(req,res)=>{
       db.Actor.findAll()
       .then(resultado=>{
@@ -10,6 +13,9 @@ let actorsController={
       })
       },
 
+
+      /*                      DETALLE DE ACTOR                                      */
+      
       detail:(req,res)=>{
         let id=req.params.id
         db.Actor.findByPk(id)

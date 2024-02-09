@@ -1,6 +1,10 @@
 const db = require("../database/models")
 
 let moviesController={
+
+
+    /*            LISTADO   DE  PELICULAS                   */
+
    list:(req,res)=>{
         
       db.Movie.findAll()
@@ -15,6 +19,10 @@ let moviesController={
       })
  
     },
+
+
+    /*           DETALLE DE PELICULA                  */
+
     detail:(req,res)=>{
         let id=req.params.id
           let generos=   db.Genre.findAll().
@@ -27,6 +35,10 @@ let moviesController={
         })
         
     },
+
+
+    /*                   PELICULAS ORDENADAS POR FECHA DE ESTRENO                */
+
     nuevo:(req,res)=>{
     db.Movie.findAll(
         {
@@ -40,6 +52,9 @@ let moviesController={
     .catch(error=>{
         res.send(error)})
     },
+
+
+    /*PELICULAS RECOMENDADAS*/
 
     recommended:(req,res)=>{
         db.Movie.findAll({
